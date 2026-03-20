@@ -27,6 +27,9 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
     this.totalPosts = 0;
     this.posts = [];
     this.title = "";
+    this.channelTitle = "";
+    this.channelImage = "";
+    this.channelImageDescription = "";
   }
 
   // Lit reactive properties
@@ -36,7 +39,10 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
       title: { type: String },
       currentIndex: {type: Number},
       totalPosts: {type: Number},
-      posts: {type: Array}
+      posts: {type: Array},
+      channelTitle: { type: String },
+      channelImage: {type: String},
+      channelImageDescription: {type:String}
     };
   }
 
@@ -60,6 +66,25 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
         padding: var(--ddd-spacing-4) var(--ddd-spacing-11);
         box-shadow: var(--ddd-boxShadow-sm);
       }
+
+      .channel-header {
+            display: flex;
+            align-items: center;
+            gap: var(--ddd-spacing-2);
+        }
+
+        .channel-header h2{
+            font: var(--ddd-font-size-l) var(--ddd-font-primary);
+            color: var(--ddd-theme-default-beaverBlue);
+            margin: var(--ddd-spacing-4) 0 0 0;
+        }
+
+        .channel-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--ddd-radius-circle);
+            margin-top: var(--ddd-spacing-3);
+        }
     `];
   }
 
@@ -104,20 +129,24 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     
-<div class="wrapper">
-      <insta-clone-post-arrow 
-        .currentIndex=${this.currentIndex}
-        .totalPosts=${this.totalPosts}
-        @previous-slide="${this.previousSlide}"   
-        @next-slide="${this.nextSlide}">   
-      </insta-clone-post-arrow>
-      <slot></slot>
-      <insta-clone-post-indicator 
-        @insta-clone-index-changed="${this.handleEvent}"
-        .currentIndex="${this.currentIndex}" 
-        .totalPosts="${this.totalPosts ? this.posts.length : 0 }">
-      </insta-clone-post-indicator>
-    </div>`;
+  <div class="wrapper">
+    <div class="channel-header">
+      <img src=${this.channelImage} alt=${this.channelImageDescription}>
+      <h2><strong>${this.channelTitle}</strong></h2>
+    </div> 
+    <insta-clone-post-arrow 
+      .currentIndex=${this.currentIndex}
+      .totalPosts=${this.totalPosts}
+      @previous-slide="${this.previousSlide}"   
+      @next-slide="${this.nextSlide}">   
+    </insta-clone-post-arrow>
+    <slot></slot>
+    <insta-clone-post-indicator 
+      @insta-clone-index-changed="${this.handleEvent}"
+      .currentIndex="${this.currentIndex}" 
+      .totalPosts="${this.totalPosts ? this.posts.length : 0 }">
+    </insta-clone-post-indicator>
+  </div>`;
   }
 }
 

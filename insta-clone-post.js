@@ -21,24 +21,18 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
         super();
         this.username = "";
-        this.channelTitle = "";
         this.active = false;
         this.postImage = "";
         this.imageDescription = "";
-        this.channelImage = "";
-        this.channelImageDescription = "";
     }
 
     static get properties() {
     return {
       ...super.properties,
       username: { type: String },
-      channelTitle: { type: String },
       active: { type: Boolean, reflect: true },
       postImage: {type: String},
       imageDescription: {type: String},
-      channelImage: {type: String},
-      channelImageDescription: {type:String}
     };
     }
 
@@ -47,7 +41,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        height: 550px;
+        height: 450px;
         }
 
         .post-caption::-webkit-scrollbar {
@@ -63,29 +57,9 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         border-radius: var(--ddd-spacing-5); 
         }
 
-        .channel-title {
-            display: flex;
-            align-items: center;
-            gap: var(--ddd-spacing-2);
-        }
-
-        .channel-title h2{
-            font: var(--ddd-font-size-l) var(--ddd-font-primary);
-            color: var(--ddd-theme-default-beaverBlue);
-            margin: var(--ddd-spacing-4) 0 0 0;
-        }
-
-        .channel-title img {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--ddd-radius-circle);
-            margin-top: var(--ddd-spacing-3);
-        }
-
         .username h4{
             font: var(--ddd-font-size-sm) var(--ddd-font-primary);
             color: var(--ddd-theme-default-link);
-            
         }
 
         .post-caption {
@@ -100,9 +74,12 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         .post-image img {
             display: block;
             max-width: 400px;
+            max-height: 250px;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: var(--ddd-spacing-3);
+            border:  var(--ddd-border-md);
+            border-color: var(--ddd-theme-default-beaverBlue);
         }
 
         :host([active])
@@ -119,22 +96,32 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
 
     render() {
         return html `
-        <div class="channel-title">
-            <img src=${this.channelImage} alt=${this.channelImageDescription}>
-            <h2><strong>${this.channelTitle}</strong></h2>
-        </div> 
         <div class="username">
             <h4><strong>${this.username}</strong></h4>
         </div>
-        
         <div class="post-image">
-            <img src=${this.postImage} alt=${this.imageDescription}>
+            <img src=${this.postImage} alt=${this.imageDescription} loading="lazy">
         </div>
         <div class="post-caption">
         <p>
             <strong>${this.username}</strong> <slot></slot> 
         </p>
         </div>`;
+    }
+
+    firstUpdated() {
+        this.getFox();
+    }
+
+    getFox() {
+    fetch("https://randomfox.ca/floof/").then((resp) => {
+    // headers indicating the request was good, then process it
+    if (resp.ok) {
+      return resp.json();
+    }
+    }).then((data) => {
+        this.postImage = data.image;
+        });
     }
 
 }
