@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "./insta-clone-post-indicator.js"
 
 /**
  * `insta-clone-project`
@@ -24,6 +25,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         this.active = false;
         this.postImage = "";
         this.imageDescription = "";
+        this.liked = false;        
     }
 
     static get properties() {
@@ -33,6 +35,10 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
       active: { type: Boolean, reflect: true },
       postImage: {type: String},
       imageDescription: {type: String},
+      liked: {type: Boolean},
+      index: {type : Number}, 
+      currentIndex: {type: Number},
+      totalPosts: {type: Number}
     };
     }
 
@@ -41,7 +47,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        height: 450px;
+        height: 470px;
         }
 
         .post-caption::-webkit-scrollbar {
@@ -82,6 +88,17 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
             border-color: var(--ddd-theme-default-beaverBlue);
         }
 
+        .like-button {
+            background: none;
+            border: none;
+            font-size: var(--ddd-font-size-lg);
+            //padding: var(--ddd-spacing-1);
+        }
+
+        .like-button:hover, .like-button:focus {
+            cursor: pointer;
+        }
+
         :host([active])
         {
             display: block;
@@ -91,6 +108,8 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         {
             display: none;
         }
+        
+
     `];
     }
 
@@ -102,6 +121,13 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         <div class="post-image">
             <img src=${this.postImage} alt=${this.imageDescription} loading="lazy">
         </div>
+        <div class="actions">
+            <span>
+                <button class="like-button" @click="${this.storeLike}">
+               ${this.liked ? "❤️" : "🤍"}
+                </button>
+            </span> 
+        </div>
         <div class="post-caption">
         <p>
             <strong>${this.username}</strong> <slot></slot> 
@@ -111,17 +137,32 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
 
     firstUpdated() {
         this.getFox();
+        this.loadFromStorage();
     }
 
     getFox() {
-    fetch("https://randomfox.ca/floof/").then((resp) => {
-    // headers indicating the request was good, then process it
-    if (resp.ok) {
-      return resp.json();
+        fetch("https://randomfox.ca/floof/").then((resp) => {
+        if (resp.ok) {
+        return resp.json();
+        }
+        }).then((data) => {
+            this.postImage = data.image;
+            });
     }
-    }).then((data) => {
-        this.postImage = data.image;
-        });
+
+    saveToStorage() {
+        localStorage.setItem("likes-" + this.index, JSON.stringify(this.liked));
+    }
+
+    loadFromStorage() {
+        const savedLikes = localStorage.getItem("likes-" + this.index);
+
+        if (savedLikes) this.liked = JSON.parse(savedLikes);
+    }
+
+    storeLike() {
+        this.liked = !this.liked;
+        this.saveToStorage();
     }
 
 }

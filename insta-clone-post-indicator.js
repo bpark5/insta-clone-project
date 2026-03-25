@@ -38,7 +38,6 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
             position: absolute;
             bottom: var(--ddd-spacing-4);
             left: var(--ddd-spacing-12);
-
         }
 
         .dot.active {
@@ -49,7 +48,7 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
         .dot {
             color: var(--ddd-theme-default-limestoneGray);
             padding: var(--ddd-spacing-1);
-            font-size: var(--ddd-font-size-s);
+            font-size: var(--ddd-font-size-xxs);
             cursor: pointer;
         }
 

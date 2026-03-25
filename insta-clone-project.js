@@ -95,16 +95,15 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _updatePosts() {
-      this.posts.forEach((slide, i) => slide.active = (i === this.currentIndex));  
-        const indexChange = new CustomEvent("insta-clone-index-changed", {
-          composed: true,
-          bubbles: true,
-          detail: {
-              index: this.currentIndex
-          },
-        });
-        this.dispatchEvent(indexChange);
-      };
+    this.posts.forEach((slide, i) => {
+      slide.active = (i === this.currentIndex)});  
+    const indexChange = new CustomEvent("insta-clone-index-changed", {
+        composed: true,
+        bubbles: true,
+        detail: {index: this.currentIndex},
+      });
+    this.dispatchEvent(indexChange);
+  }
 
   nextSlide() {
     if (this.currentIndex < this.totalPosts - 1) {
