@@ -35,9 +35,7 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
     css`
         :host {
             display: block;
-            position: absolute;
-            bottom: var(--ddd-spacing-4);
-            left: var(--ddd-spacing-12);
+            text-align: center;
         }
 
         .dot.active {
