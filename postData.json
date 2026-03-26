@@ -1,0 +1,25 @@
+{
+    "author":
+    {
+        "username": "@piratesLover",
+        "profilePicture": "https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w1024/mlb/stkdr5z7zbasmrhtotmt",
+        "channelTitle": "Pittsburgh Pirates",
+        "userSince": 90876543
+    },
+    "image": [
+        {
+            "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Paul_Skenes_stl_2024.jpg/250px-Paul_Skenes_stl_2024.jpg",
+            "title": "Picture of my pookie Paul Skenes",
+            "dateTaken": 45697,
+            "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Paul_Skenes_stl_2024.jpg/250px-Paul_Skenes_stl_2024.jpg"
+        },
+        {
+            "source": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRIiww5ye8cvdDtVB1SJC8Lp7TL8nxBSlaTvCMTxkhm8afn5fVAPWYEZb3D6xNUkuds07FPw2lkCuCSa-Q",
+            "title": "Brandon Lowe is the best part of this team",
+            "dateTaken": 3456789,
+            "thumbnail": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRIiww5ye8cvdDtVB1SJC8Lp7TL8nxBSlaTvCMTxkhm8afn5fVAPWYEZb3D6xNUkuds07FPw2lkCuCSa-Q"
+        }
+
+    ]
+
+}

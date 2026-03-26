@@ -74,23 +74,25 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .channel-header {
-            display: flex;
-            align-items: center;
-            gap: var(--ddd-spacing-2);
-        }
+        display: flex;
+        align-items: center;
+        gap: var(--ddd-spacing-2);
+      }
 
-        .channel-header h2{
-            font: var(--ddd-font-size-l) var(--ddd-font-primary);
-            color: var(--ddd-theme-default-beaverBlue);
-            margin: var(--ddd-spacing-4) 0 0 0;
-        }
+      .channel-header h2{
+        font: var(--ddd-font-size-l) var(--ddd-font-primary);
+        color: var(--ddd-theme-default-beaverBlue);
+        margin: var(--ddd-spacing-4) 0 0 0;
+    }
 
-        .channel-header img {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--ddd-radius-circle);
-            margin-top: var(--ddd-spacing-3);
-        }
+      .channel-header img {
+        max-width: 40px;
+        height: 40px;
+        aspect-ratio: 1024 / 576;
+        object-fit: cover;
+        border-radius: var(--ddd-radius-circle);
+        margin-top: var(--ddd-spacing-3);
+      }
     `];
   }
 
@@ -101,6 +103,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
     this.posts = Array.from(this.querySelectorAll("insta-clone-post"));
     this.totalPosts = this.posts.length;
     this._updatePosts()
+    this.getChannelInformation();
   }
 
   updated(changedProperties) {
@@ -137,6 +140,19 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
   handleEvent(e) {
     this.currentIndex = e.detail.index;
     this._updatePosts();
+  }
+
+  getChannelInformation() {
+    fetch("./postData.json").then((resp) => {
+      if (resp.ok) {
+          return resp.json();
+      }
+      throw new Error("Failed to load JSON");
+      })
+      .then((data) => {
+        this.channelTitle = data.author.channelTitle;
+        this.channelImage = data.author.profilePicture;
+      });
   }
 
   // Lit render the HTML

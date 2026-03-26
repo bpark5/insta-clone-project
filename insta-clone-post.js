@@ -92,7 +92,6 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
             background: none;
             border: none;
             font-size: var(--ddd-font-size-lg);
-            //padding: var(--ddd-spacing-1);
         }
 
         .like-button:hover, .like-button:focus {
@@ -136,17 +135,21 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     }
 
     firstUpdated() {
-        this.getFox();
+        this.getPosts();
         this.loadFromStorage();
     }
 
-    getFox() {
-        fetch("https://randomfox.ca/floof/").then((resp) => {
+    getPosts() {
+        fetch("./postData.json").then((resp) => {
         if (resp.ok) {
-        return resp.json();
+            return resp.json();
         }
-        }).then((data) => {
-            this.postImage = data.image;
+        throw new Error("Failed to load JSON");
+        })
+        .then((data) => {
+            this.username = data.author.username;
+            this.postImage = data.image[0].source;
+            this.imageDescription = imageData.title;
             });
     }
 
@@ -156,7 +159,6 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
 
     loadFromStorage() {
         const savedLikes = localStorage.getItem("likes-" + this.index);
-
         if (savedLikes) this.liked = JSON.parse(savedLikes);
     }
 
