@@ -15,6 +15,12 @@ import "./insta-clone-post-indicator.js";
  * @demo index.html
  * @element insta-clone-project
  */
+function updateQueryParam(key, value) {
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set(key, value);
+    history.pushState(null, '', currentUrl.toString());
+  }
+
 export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
@@ -89,9 +95,18 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   firstUpdated() {
+    const urlParam = new URLSearchParams(window.location.search);
+    const index = urlParam.get("activeIndex");
+    this.currentIndex = index ? parseInt(index) : 0;
     this.posts = Array.from(this.querySelectorAll("insta-clone-post"));
     this.totalPosts = this.posts.length;
     this._updatePosts()
+  }
+
+  updated(changedProperties) {
+    if (changedProperties.has("currentIndex")) {
+      updateQueryParam("activeIndex", this.currentIndex);
+    }
   }
 
   _updatePosts() {
