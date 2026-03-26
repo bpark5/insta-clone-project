@@ -113,8 +113,11 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _updatePosts() {
-    this.posts.forEach((slide, i) => {
-      slide.active = (i === this.currentIndex)});  
+    this.posts.forEach((post, i) => {
+      post.currentIndex = this.currentIndex;
+      post.index = i;
+      post.active = (i === this.currentIndex)});  
+      
     const indexChange = new CustomEvent("insta-clone-index-changed", {
         composed: true,
         bubbles: true,
@@ -150,8 +153,13 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
       throw new Error("Failed to load JSON");
       })
       .then((data) => {
+        this.postData = data;
         this.channelTitle = data.author.channelTitle;
         this.channelImage = data.author.profilePicture;
+        this.posts.forEach (post => {
+          post.postData = data;
+          post.username = data.author.username;
+        })
       });
   }
 

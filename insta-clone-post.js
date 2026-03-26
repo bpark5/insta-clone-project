@@ -38,7 +38,8 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
       liked: {type: Boolean},
       index: {type : Number}, 
       currentIndex: {type: Number},
-      totalPosts: {type: Number}
+      totalPosts: {type: Number},
+      postData: {type: Object}
     };
     }
 
@@ -135,22 +136,18 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     }
 
     firstUpdated() {
-        this.getPosts();
         this.loadFromStorage();
     }
 
-    getPosts() {
-        fetch("./postData.json").then((resp) => {
-        if (resp.ok) {
-            return resp.json();
+
+    updated(changedProperties) {
+        if (changedProperties.has("currentIndex") || changedProperties.has("postData")) {
+            if (this.index === this.currentIndex && this.postData) {
+                const image = this.postData.image[this.index];
+                this.postImage = image.source;
+                this.imageDescription = image.title;
+            }
         }
-        throw new Error("Failed to load JSON");
-        })
-        .then((data) => {
-            this.username = data.author.username;
-            this.postImage = data.image[0].source;
-            this.imageDescription = imageData.title;
-            });
     }
 
     saveToStorage() {
