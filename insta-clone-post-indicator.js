@@ -45,8 +45,7 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
 
         .dot {
             color: var(--ddd-theme-default-limestoneGray);
-            padding: var(--ddd-spacing-1);
-            font-size: var(--ddd-font-size-xxs);
+            font-size: var(--ddd-font-size-4xs);
             cursor: pointer;
         }
 

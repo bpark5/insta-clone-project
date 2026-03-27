@@ -49,7 +49,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        height: 470px;
+        height: 450px;
         }
 
         .post-caption::-webkit-scrollbar {
@@ -81,13 +81,18 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
 
         .post-image img {
             display: block;
-            max-width: 400px;
-            max-height: 250px;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: var(--ddd-spacing-3);
             border:  var(--ddd-border-md);
             border-color: var(--ddd-theme-default-beaverBlue);
+        }
+
+        .actions button {
+            color: white;
         }
 
         .like-button {
@@ -96,8 +101,15 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
             font-size: var(--ddd-font-size-lg);
         }
 
-        .like-button:hover, .like-button:focus {
+        .share-button {
+            background: none;
+            border: none;
+            font-size: var(--ddd-font-size-lg);
+        }
+
+        .like-button:hover, .share-button:hover {
             cursor: pointer;
+            opacity: 0.6;
         }
 
         :host([active])
@@ -123,9 +135,14 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         <div class="actions">
             <span>
                 <button class="like-button" @click="${this.storeLike}">
-               ${this.liked ? "❤️" : "🤍"}
+               ${this.liked ? "❤️" : "🩶"}
                 </button>
             </span> 
+            <span>
+                <button class="share-button" @click="${this.sharePost}">
+                🔁
+                </button>
+            </span>
         </div>
         <div class="post-caption">
         <p>
@@ -134,12 +151,10 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         </div>`;
     }
 
-    firstUpdated() {
-        this.loadFromStorage();
-    }
-
-
     updated(changedProperties) {
+        if (changedProperties.has("index")) {
+            this.loadFromStorage();
+        }
         if (changedProperties.has("currentIndex") || changedProperties.has("postData")) {
             if (this.index === this.currentIndex && this.postData) {
                 const image = this.postData.image[this.index];
@@ -150,11 +165,11 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     }
 
     saveToStorage() {
-        localStorage.setItem("likes", JSON.stringify(this.liked));
+        localStorage.setItem("likes-" + this.index, JSON.stringify(this.liked));
     }
 
     loadFromStorage() {
-        const savedLikes = localStorage.getItem("likes");
+        const savedLikes = localStorage.getItem("likes-" + this.index);
         if (savedLikes) this.liked = JSON.parse(savedLikes);
     }
 
