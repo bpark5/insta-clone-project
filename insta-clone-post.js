@@ -25,7 +25,8 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         this.active = false;
         this.postImage = "";
         this.imageDescription = "";
-        this.liked = false;        
+        this.liked = false;
+        this.postData = null;
     }
 
     static get properties() {
@@ -108,8 +109,6 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         {
             display: none;
         }
-        
-
     `];
     }
 
@@ -151,11 +150,11 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     }
 
     saveToStorage() {
-        localStorage.setItem("likes-" + this.index, JSON.stringify(this.liked));
+        localStorage.setItem("likes", JSON.stringify(this.liked));
     }
 
     loadFromStorage() {
-        const savedLikes = localStorage.getItem("likes-" + this.index);
+        const savedLikes = localStorage.getItem("likes");
         if (savedLikes) this.liked = JSON.parse(savedLikes);
     }
 
@@ -163,7 +162,6 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         this.liked = !this.liked;
         this.saveToStorage();
     }
-
 }
 
 globalThis.customElements.define(InstaClonePost.tag, InstaClonePost);

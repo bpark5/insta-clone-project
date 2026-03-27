@@ -36,6 +36,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
     this.channelTitle = "";
     this.channelImage = "";
     this.channelImageDescription = "";
+    this.postData = null;
   }
 
   // Lit reactive properties
@@ -48,7 +49,8 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
       posts: {type: Array},
       channelTitle: { type: String },
       channelImage: {type: String},
-      channelImageDescription: {type:String}
+      channelImageDescription: {type: String},
+      postData: {type: Object}
     };
   }
 
@@ -146,7 +148,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   getChannelInformation() {
-    fetch("./postData.json").then((resp) => {
+    fetch(new URL("./postData.json", import.meta.url).href).then((resp) => {
       if (resp.ok) {
           return resp.json();
       }
