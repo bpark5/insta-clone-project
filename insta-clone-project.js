@@ -164,7 +164,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
         })
       });
   }
-  
+
   // Lit render the HTML
   render() {
     return html`

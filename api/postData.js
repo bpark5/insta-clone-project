@@ -1,4 +1,10 @@
-{
+export default async function handler(request, res) {
+  res.setHeader('Cache-Control', 'max-age=0, s-maxage=1800');
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
+  res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
+  res.json({
     "author":
     {
         "username": "@piratesLover",
@@ -43,7 +49,6 @@
             "dateTaken": 5742089,
             "thumbnail": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_988,w_4030,h_2266/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/4/01jz6fy16s59k84ra7zq.jpg"
         }
-
-    ]
-
+        ]
+    });
 }
