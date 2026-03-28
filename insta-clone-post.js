@@ -98,18 +98,20 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         .like-button {
             background: none;
             border: none;
-            font-size: var(--ddd-font-size-lg);
+            font-size: var(--ddd-font-size-xs);
         }
 
         .share-button {
-            background: none;
-            border: none;
-            font-size: var(--ddd-font-size-lg);
+            background-color: var(--ddd-theme-default-beaverBlue);
+            border: var(--ddd-border-sm);
+            border-color: white;
+            border-radius: var(--ddd-radius-xs);
+            font-size: var(--ddd-font-size-xs);
         }
 
         .like-button:hover, .share-button:hover {
             cursor: pointer;
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         :host([active])
@@ -140,7 +142,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
             </span> 
             <span>
                 <button class="share-button" @click="${this.sharePost}">
-                🔁
+                Share!
                 </button>
             </span>
         </div>
@@ -176,6 +178,18 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     storeLike() {
         this.liked = !this.liked;
         this.saveToStorage();
+    }
+
+    async sharePost() {
+        const url = `${window.location.origin}${window.location.pathname}?activeIndex=${this.index}`;
+
+        try {
+            await navigator.clipboard.writeText(url);
+            alert("Link copied!");
+        }
+        catch (err) {
+            console.error("Clipboard copy failed", err);
+        }
     }
 }
 
