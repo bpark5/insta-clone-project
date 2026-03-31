@@ -26,7 +26,8 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       currentIndex: { type: Number },
-      totalPosts: { type: Number }
+      totalPosts: { type: Number },
+      postData: {type: Object}
     };
     }
 
@@ -36,6 +37,9 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
         :host {
             display: block;
             text-align: center;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: var(--ddd-spacing-1);
         }
 
         .dot.active {
@@ -44,9 +48,21 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .dot {
-            color: var(--ddd-theme-default-limestoneGray);
-            font-size: var(--ddd-font-size-4xs);
+            display: inline-block;
             cursor: pointer;
+            
+        }
+
+        .dot img {
+            width: 20px;
+            height: 20px;
+            object-fit: cover;
+            border-radius: var(--ddd-radius-circle);
+        }
+
+        .dot.active img {
+            outline: var(--ddd-border-sm);
+            outline-color: var(--ddd-default-theme-beaverBlue);
         }
 
         .dot:not(.active):hover {
@@ -58,11 +74,12 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
     render() {
         let dots = [];
         for (let i = 0; i < this.totalPosts; i++) {
+            const thumbnail = this.postData.image[i].thumbnail;
             dots.push(html`
                 <span @click="${this._handleDotClick}" 
                 data-index="${i}" 
                 class = "dot ${i === this.currentIndex ? "active" : ""}">
-                ●
+                <img src="${thumbnail}" alt="slide ${i+1}">
                 </span>`);
         }
         return html`

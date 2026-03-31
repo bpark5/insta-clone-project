@@ -27,6 +27,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         this.imageDescription = "";
         this.liked = false;
         this.postData = null;
+        this.caption = "";
     }
 
     static get properties() {
@@ -40,7 +41,8 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
       index: {type : Number}, 
       currentIndex: {type: Number},
       totalPosts: {type: Number},
-      postData: {type: Object}
+      postData: {type: Object},
+      caption: {type: String}
     };
     }
 
@@ -49,7 +51,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        height: 450px;
+        height: 400px;
         }
 
         .post-caption::-webkit-scrollbar {
@@ -82,7 +84,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         .post-image img {
             display: block;
             width: 100%;
-            height: 250px;
+            height: 230px;
             object-fit: cover;
             margin-left: auto;
             margin-right: auto;

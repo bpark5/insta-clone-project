@@ -42,9 +42,9 @@ export class InstaClonePostArrow extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .insta-clone-post-arrow-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
       }
 
         .left-arrow, .right-arrow {

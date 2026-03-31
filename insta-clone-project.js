@@ -67,7 +67,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
         border-radius: var(--ddd-radius-xs);
         position: relative;
         box-shadow: var(--ddd-boxShadow-sm);
-        max-width: 525px;
+        max-width: 480px;
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
@@ -184,7 +184,8 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
     <insta-clone-post-indicator 
       @insta-clone-index-changed="${this.handleEvent}"
       .currentIndex="${this.currentIndex}" 
-      .totalPosts="${this.totalPosts ? this.posts.length : 0 }">
+      .totalPosts="${this.totalPosts ? this.posts.length : 0 }"
+      .postData="${this.postData}">
     </insta-clone-post-indicator>
   </div>`;
   }
