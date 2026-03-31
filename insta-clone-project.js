@@ -67,7 +67,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
         border-radius: var(--ddd-radius-xs);
         position: relative;
         box-shadow: var(--ddd-boxShadow-sm);
-        max-width: 480px; 
+        max-width: 480px;
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
