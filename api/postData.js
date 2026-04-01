@@ -10,7 +10,7 @@ export default async function handler(request, res) {
         "username": "@piratesLover",
         "profilePicture": "https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w1024/mlb/stkdr5z7zbasmrhtotmt",
         "channelTitle": "Pittsburgh Pirates",
-        "userSince": 90876543
+        "userSince": "2026/03/21"
     },
     "image": [
         {

@@ -161,6 +161,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
         this.posts.forEach (post => {
           post.postData = data;
           post.username = data.author.username;
+          post.dateJoined = data.author.userSince;
         })
       });
   }

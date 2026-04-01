@@ -67,9 +67,20 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         border-radius: var(--ddd-spacing-5); 
         }
 
-        .username h4{
-            font: var(--ddd-font-size-sm) var(--ddd-font-primary);
+        .user-information {
+            padding-top: var(--ddd-spacing-2);
+            padding-bottom: var(--ddd-spacing-4);
+        }
+
+        .username {
+            font: var(--ddd-font-size-xxs) var(--ddd-font-primary);
             color: var(--ddd-theme-default-link);
+
+        }
+
+        .date {
+            font: var(--ddd-font-size-4xs) var(--ddd-font-primary);
+            color: var(--ddd-theme-default-limestoneGray);
         }
 
         .post-caption {
@@ -79,6 +90,11 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
             font: var(--ddd-font-size-4xs) var(--ddd-font-navigation);
             max-height: 90px;
             overflow-y: auto;
+        }
+
+        .picture-date {
+            font: var(--ddd-font-size-4xs) var(--ddd-font-navigation);
+            color: var(--ddd-theme-default-limestoneGray);
         }
 
         .post-image img {
@@ -104,10 +120,8 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .share-button {
-            background-color: var(--ddd-theme-default-beaverBlue);
-            border: var(--ddd-border-sm);
-            border-color: white;
-            border-radius: var(--ddd-radius-xs);
+            background: none;
+            border: none;
             font-size: var(--ddd-font-size-xs);
         }
 
@@ -130,8 +144,8 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
 
     render() {
         return html `
-        <div class="username">
-            <h4><strong>${this.username}</strong></h4>
+        <div class="user-information">
+            <span class="username"> <strong>${this.username}</strong> </span> <span class="date">Joined ${this.dateJoined} </span>
         </div>
         <div class="post-image">
             <img src=${this.postImage} alt=${this.imageDescription} loading="lazy">
@@ -139,18 +153,18 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         <div class="actions">
             <span>
                 <button class="like-button" @click="${this.storeLike}">
-               ${this.liked ? "❤️" : "🩶"}
+                    ${this.liked ? "❤️" : "🩶"}
                 </button>
             </span> 
             <span>
                 <button class="share-button" @click="${this.sharePost}">
-                Share!
+                🚀
                 </button>
             </span>
         </div>
         <div class="post-caption">
         <p>
-            <strong>${this.username}</strong> <slot></slot> 
+            <strong>${this.username}</strong> <slot></slot> <span class="picture-date">${this.datePosted}</span>
         </p>
         </div>`;
     }
@@ -164,6 +178,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
                 const image = this.postData.image[this.index];
                 this.postImage = image.source;
                 this.imageDescription = image.title;
+                this.datePosted = image.dateTaken;
             }
         }
     }

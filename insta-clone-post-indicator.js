@@ -39,7 +39,7 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
             text-align: center;
             overflow-x: auto;
             white-space: nowrap;
-            padding: var(--ddd-spacing-1);
+            padding-top: var(--ddd-spacing-2);
         }
 
         .dot.active {
@@ -58,15 +58,17 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
             height: 20px;
             object-fit: cover;
             border-radius: var(--ddd-radius-circle);
+            transition: .3 all ease-in-out;
+        }
+
+        .dot img:hover {
+            transform: scale(1.25);
+
         }
 
         .dot.active img {
             outline: var(--ddd-border-sm);
             outline-color: var(--ddd-default-theme-beaverBlue);
-        }
-
-        .dot:not(.active):hover {
-            opacity: 0.7;
         }
     `];
     }
