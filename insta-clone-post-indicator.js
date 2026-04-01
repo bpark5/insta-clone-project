@@ -58,17 +58,17 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
             height: 20px;
             object-fit: cover;
             border-radius: var(--ddd-radius-circle);
-            transition: .3 all ease-in-out;
+            transition: .2s all ease-in-out;
         }
 
         .dot img:hover {
-            transform: scale(1.25);
+            transform: scale(1.3);
 
         }
 
         .dot.active img {
             outline: var(--ddd-border-sm);
-            outline-color: var(--ddd-default-theme-beaverBlue);
+            outline-color: var(--ddd-theme-default-skyBlue);
         }
     `];
     }
@@ -81,7 +81,7 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
                 <span @click="${this._handleDotClick}" 
                 data-index="${i}" 
                 class = "dot ${i === this.currentIndex ? "active" : ""}">
-                <img src="${thumbnail}" alt="slide ${i+1}">
+                <img src="${thumbnail}" alt="slide ${i+1}" loading="lazy">
                 </span>`);
         }
         return html`

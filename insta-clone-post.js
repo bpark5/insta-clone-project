@@ -51,7 +51,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        height: 400px;
+        height: 410px;
         }
 
         .post-caption::-webkit-scrollbar {
@@ -88,8 +88,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
             gap: var(--ddd-spacing-2);
             color: var(--ddd-theme-default-beaverBlue);
             font: var(--ddd-font-size-4xs) var(--ddd-font-navigation);
-            max-height: 90px;
-            overflow-y: auto;
+            margin-top: -15px;
         }
 
         .picture-date {
@@ -164,7 +163,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         </div>
         <div class="post-caption">
         <p>
-            <strong>${this.username}</strong> <slot></slot> <span class="picture-date">${this.datePosted}</span>
+            <strong>${this.username}</strong> ${this.imageDescription} <span class="picture-date">${this.datePosted}</span>
         </p>
         </div>`;
     }
