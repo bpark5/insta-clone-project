@@ -68,7 +68,7 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
 
         .dot.active img {
             outline: var(--ddd-border-sm);
-            outline-color: var(--ddd-theme-default-skyBlue);
+            outline-color: light-dark(var(--ddd-theme-default-skyBlue),var(--ddd-theme-default-creekLight));
         }
     `];
     }

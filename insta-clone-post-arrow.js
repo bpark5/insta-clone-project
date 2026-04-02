@@ -48,10 +48,10 @@ export class InstaClonePostArrow extends DDDSuper(I18NMixin(LitElement)) {
       }
 
         .left-arrow, .right-arrow {
-        background-color: var(--ddd-theme-default-white);
-        color: var(--ddd-theme-default-link);
+        background-color: light-dark(var(--ddd-theme-default-white),var(--ddd-theme-default-coalyGray));
+        color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyLight));
         border: var(--ddd-border-md);
-        border-color: var(--ddd-theme-default-link);
+        border-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyLight));
         padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
         margin: 0 -15px;
         border-radius: var(--ddd-radius-circle);

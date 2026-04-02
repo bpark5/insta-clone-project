@@ -61,12 +61,11 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
       :host {
         display: block;
         color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
-        background-color: var(--ddd-theme-default-slateMaxLight);
+        background-color: light-dark(var(--ddd-theme-default-slateMaxLight), var(--ddd-theme-default-slateGray));
         border-radius: var(--ddd-radius-xs);
         position: relative;
-        box-shadow: var(--ddd-boxShadow-sm);
+        box-shadow: light-dark(var(--ddd-boxShadow-sm), none);
         max-width: 480px; 
       }
       .wrapper {
@@ -83,7 +82,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
 
       .channel-header h2{
         font: var(--ddd-font-size-l) var(--ddd-font-primary);
-        color: var(--ddd-theme-default-beaverBlue);
+        color: light-dark(var(--ddd-theme-default-beaverBlue), var(--ddd-theme-default-skyLight));
         margin: var(--ddd-spacing-4) 0 0 0;
     }
 

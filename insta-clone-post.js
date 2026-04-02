@@ -74,7 +74,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
 
         .username {
             font: var(--ddd-font-size-xxs) var(--ddd-font-primary);
-            color: var(--ddd-theme-default-link);
+            color: light-dark(var(--ddd-theme-default-skyBlue), var(--ddd-theme-default-pughBlue));
 
         }
 
@@ -86,7 +86,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         .post-caption {
             display: flex;
             gap: var(--ddd-spacing-2);
-            color: var(--ddd-theme-default-beaverBlue);
+            color: light-dark(var(--ddd-theme-default-beaverBlue), var(--ddd-theme-default-skyLight));
             font: var(--ddd-font-size-4xs) var(--ddd-font-navigation);
             margin-top: -15px;
         }
@@ -105,7 +105,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
             margin-right: auto;
             margin-bottom: var(--ddd-spacing-3);
             border:  var(--ddd-border-md);
-            border-color: var(--ddd-theme-default-beaverBlue);
+            border-color: light-dark(var(--ddd-theme-default-beaverBlue), var(--ddd-theme-default-skyLight));
         }
 
         .actions button {
