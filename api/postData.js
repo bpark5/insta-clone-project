@@ -27,7 +27,7 @@ export default async function handler(request, res) {
         },
         {
             "source": "https://images2.minutemediacdn.com/image/upload/c_crop,x_920,y_108,w_2441,h_1373/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/pittsburgh_pirates/01kmphx1tv9y52gfczxx.jpg",
-            "title": "O'Neil Cruz actually cannot cach a baseball",
+            "title": "O'Neil Cruz started poorly but has slightly redeemed himself since a horrible Opening Day",
             "dateTaken": "2024/05/05",
             "thumbnail": "https://images2.minutemediacdn.com/image/upload/c_crop,x_920,y_108,w_2441,h_1373/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/pittsburgh_pirates/01kmphx1tv9y52gfczxx.jpg"
         },
@@ -39,25 +39,25 @@ export default async function handler(request, res) {
         },
         {
             "source": "https://73f3e7d5672db1849e6c-6434aaf008a29447cc424990bc6a54a7.ssl.cf2.rackcdn.com/stories/202505210007/1140x_a10-7_cTC/2201694398_1759346981.jpg",
-            "title": "Bubba Chandler has a fun name to say",
+            "title": "Bubba Chandler has a fun name to say and is a promising young pitcher",
             "dateTaken": "2025/08/24",
             "thumbnail": "https://73f3e7d5672db1849e6c-6434aaf008a29447cc424990bc6a54a7.ssl.cf2.rackcdn.com/stories/202505210007/1140x_a10-7_cTC/2201694398_1759346981.jpg"
         },
         {
             "source": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_988,w_4030,h_2266/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/4/01jz6fy16s59k84ra7zq.jpg",
-            "title": "Konner Griffin is a promising prospect who is going to make $100 million+ before he debuts",
+            "title": "Konner Griffin is a promising prospect who just got promoted on April 2nd",
             "dateTaken": "2026/03/13",
             "thumbnail": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_988,w_4030,h_2266/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/4/01jz6fy16s59k84ra7zq.jpg"
         },
         {
             "source": "https://73f3e7d5672db1849e6c-6434aaf008a29447cc424990bc6a54a7.ssl.cf2.rackcdn.com/stories/202508140034/1140x_a10-7_cTC/Reds-Pirates-Baseball-115_1759349473.jpg",
-            "title": "Bryan Reynolds is consistently one of the best players",
+            "title": "Bryan Reynolds is consistently one of the best players on the team",
             "dateTaken": "2025/04/12",
             "thumbnail": "https://73f3e7d5672db1849e6c-6434aaf008a29447cc424990bc6a54a7.ssl.cf2.rackcdn.com/stories/202508140034/1140x_a10-7_cTC/Reds-Pirates-Baseball-115_1759349473.jpg"
         },
         {
             "source": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_215,w_4200,h_2362/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/pittsburgh_pirates/01jq2xwrkanq8sdbwbge.jpg",
-            "title": "Henry Davis was the first overall pick and has been awful",
+            "title": "Henry Davis was the first overall pick and has been awful 👎",
             "dateTaken": "2025/07/03",
             "thumbnail": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_215,w_4200,h_2362/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/pittsburgh_pirates/01jq2xwrkanq8sdbwbge.jpg"
         },
@@ -81,7 +81,7 @@ export default async function handler(request, res) {
         },
         {
             "source": "https://pittsburghbaseballnow.com/wp-content/uploads/2023/10/Triolo20232-1024x630.jpg",
-            "title": "Jared Triolo is pretty solid but will be replaced by Konner Griffin eventually",
+            "title": "Jared Triolo is pretty solid but will be replaced by Konner Griffin soon",
             "dateTaken": "2024/09/27",
             "thumbnail": "https://pittsburghbaseballnow.com/wp-content/uploads/2023/10/Triolo20232-1024x630.jpg"
         },

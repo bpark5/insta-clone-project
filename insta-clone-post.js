@@ -109,7 +109,7 @@ export class InstaClonePost extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .actions button {
-            color: white;
+            color: var(--ddd-theme-default-white);
         }
 
         .like-button {

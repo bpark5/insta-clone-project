@@ -147,7 +147,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   getChannelInformation() {
-    fetch(new URL("./postData.json", import.meta.url).href).then((resp) => {
+    fetch("/api/postData.js").then((resp) => {
       if (resp.ok) {
           return resp.json();
       }
