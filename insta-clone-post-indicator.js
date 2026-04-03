@@ -40,6 +40,7 @@ export class InstaClonePostIndicator extends DDDSuper(I18NMixin(LitElement)) {
             overflow-x: auto;
             white-space: nowrap;
             padding-top: var(--ddd-spacing-2);
+            padding-bottom: var(--ddd-spacing-1);
         }
 
         .dot.active {

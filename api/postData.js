@@ -80,10 +80,10 @@ export default async function handler(request, res) {
             "thumbnail": "https://img.mlbstatic.com/mlb-images/image/upload/ar_16:9,g_auto,q_auto:good,w_1024,c_fill,f_jpg/mlb/qo0zmxlbiqo8jwqxri5i"
         },
         {
-            "source": "https://pittsburghbaseballnow.com/wp-content/uploads/2023/10/Triolo20232-1024x630.jpg",
+            "source": "https://73f3e7d5672db1849e6c-6434aaf008a29447cc424990bc6a54a7.ssl.cf2.rackcdn.com/stories/202601240017/1140x_a10-7_cTC/Pirates-Orioles-Baseball-1-8_1769293378.jpg",
             "title": "Jared Triolo is pretty solid but will be replaced by Konner Griffin soon",
             "dateTaken": "2024/09/27",
-            "thumbnail": "https://pittsburghbaseballnow.com/wp-content/uploads/2023/10/Triolo20232-1024x630.jpg"
+            "thumbnail": "https://73f3e7d5672db1849e6c-6434aaf008a29447cc424990bc6a54a7.ssl.cf2.rackcdn.com/stories/202601240017/1140x_a10-7_cTC/Pirates-Orioles-Baseball-1-8_1769293378.jpg"
         },
         {
             "source": "https://www.dkpittsburghsports.com/files/Pirates/regular-season-2025/braxton-ashcraft-first-mlb-start-milwaukee-getty.jpg",

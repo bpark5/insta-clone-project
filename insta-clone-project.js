@@ -37,6 +37,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
     this.channelImage = "";
     this.channelImageDescription = "";
     this.postData = null;
+    this.loaded = false;
   }
 
   // Lit reactive properties
@@ -50,7 +51,8 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
       channelTitle: { type: String },
       channelImage: {type: String},
       channelImageDescription: {type: String},
-      postData: {type: Object}
+      postData: {type: Object},
+      loaded: { type: Boolean, reflect: true }
     };
   }
 
@@ -68,6 +70,11 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
         box-shadow: light-dark(var(--ddd-boxShadow-sm), none);
         max-width: 480px; 
       }
+
+      :host(:not([loaded])) {
+        visibility: hidden;
+      }
+      
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4) var(--ddd-spacing-11);
@@ -162,6 +169,7 @@ export class InstaCloneProject extends DDDSuper(I18NMixin(LitElement)) {
           post.username = data.author.username;
           post.dateJoined = data.author.userSince;
         })
+        this.loaded = true;
       });
   }
 
